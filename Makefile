@@ -6,13 +6,13 @@
 #    By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/31 15:08:45 by pbeheyt           #+#    #+#              #
-#    Updated: 2022/06/14 02:02:39 by pbeheyt          ###   ########.fr        #
+#    Updated: 2022/06/14 06:36:33 by pbeheyt          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= Push_swap
 
-SRC		= Push_swap.c
+SRC		= main.c check.c parsing.c
 
 DIR 	= ${addprefix srcs/,${SRC}}
 

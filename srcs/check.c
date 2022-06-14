@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstnew.c                                        :+:      :+:    :+:   */
+/*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/09 11:47:15 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/14 06:48:59 by pbeheyt          ###   ########.fr       */
+/*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
+/*   Updated: 2022/06/14 05:05:25 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "Push_swap.h"
 
-t_list	*ft_lstnew(int nb, t_list *lst)
+int check_duplicate(t_list *lst, int nb)
 {
-	t_list	*new;
-
-	(void)lst;
-	new = malloc(sizeof(t_list));
-	if (!new)
-		return (0);
-	new->nb = nb;
-	// new->index = lst->index;
-	new->next = 0;
-	return (new);
+    t_list  *tmp;
+    
+    tmp = lst;
+    while (tmp)
+    {
+        if (nb == tmp->nb)
+            return (1);
+        tmp = tmp->next;
+    }
+    return (0);
 }

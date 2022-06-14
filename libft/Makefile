@@ -6,7 +6,7 @@
 #    By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/31 15:08:45 by pbeheyt           #+#    #+#              #
-#    Updated: 2022/05/16 22:29:00 by pbeheyt          ###   ########.fr        #
+#    Updated: 2022/06/14 04:32:58 by pbeheyt          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,22 +51,21 @@ SRC = ft_memset.c \
     ft_putendl_fd.c \
     ft_striteri.c    \
     ft_putnbr_fd.c \
-
-BONUS_SRC = ft_lstnew.c \
+    ft_lstnew.c \
     ft_lstadd_front.c \
     ft_lstsize.c \
     ft_lstlast.c \
     ft_lstadd_back.c \
     ft_lstdelone.c \
     ft_lstclear.c \
-    ft_lstiter.c \
-    ft_lstmap.c
+    ft_lstiter.c
 
 BONUS_OBJ = $(BONUS_SRC:.c=.o)
 
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
+
 
 $(NAME): $(OBJ)
 	ar rc $(NAME) $^
@@ -76,10 +75,6 @@ $(NAME): $(OBJ)
 	@echo "\033[0;33mGenerating obj..."
 	$(CC) -c $(CFLAGS) $^
 	@echo "\033[0m"
-
-bonus : $(OBJ) $(BONUS_OBJ)
-	ar rc $(NAME) $^
-	ranlib $(NAME)
 
 clean:
 	rm -f $(OBJ) $(BONUS_OBJ)

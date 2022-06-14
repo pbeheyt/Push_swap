@@ -6,17 +6,17 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 11:34:40 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/05/16 22:21:12 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/14 06:32:26 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_atoi(const char *str)
+int	ft_atoi(const char *str, int *error)
 {
-	long	nblong;
-	int		sign;
-	int		i;
+	long		nblong;
+	int			sign;
+	int			i;
 
 	i = 0;
 	sign = 1;
@@ -35,6 +35,10 @@ int	ft_atoi(const char *str)
 		nblong = nblong * 10 + str[i] - '0';
 		i++;
 	}
+	if (str[i])
+		*error = 1;
+	if (nblong * sign < INT_MIN || nblong * sign > INT_MAX)
+        *error = 1;
 	return (nblong * sign);
 }
 /*
