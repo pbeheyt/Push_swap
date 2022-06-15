@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/15 03:40:43 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/16 01:15:44 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@
 // 		new_element = ft_lstnew(data->nb);
 // 		ft_lstadd_back(listA, new_element);
 // }
-void pushB(t_list **listA, t_list **listB)
+void pushB(t_list **list_a, t_list **list_b)
 {
 		t_list  *headA;
 		t_list  *headB;
 		t_list  *tmp;
 		
-		headA = *listA;
-		headB = *listB;
+		headA = *list_a;
+		headB = *list_b;
 		if (!headA)
 			return ;
 		tmp = headA;
@@ -41,21 +41,21 @@ void pushB(t_list **listA, t_list **listB)
 			tmp->next = headB;
 			headB = tmp;	
 		}
-		*listA = headA;
-		*listB = headB;
+		*list_a = headA;
+		*list_b = headB;
 }
 
-void pushA(t_list **listA, t_list **listB)
+void pushA(t_list **list_a, t_list **list_b)
 {
 		t_list  *headA;
 		t_list  *headB;
 		t_list  *tmp;
 		
-		headA = *listA;
-		headB = *listB;
+		headA = *list_a;
+		headB = *list_b;
 		if (!headB)
 			return ;
-		tmp = headB;
+		tmp = list_b;
 		headB = headB->next;
 		if (!headA)
 		{
@@ -67,8 +67,8 @@ void pushA(t_list **listA, t_list **listB)
 			tmp->next = headA;
 			headA = tmp;	
 		}
-		*listA = headA;
-		*listB = headB;
+		*list_a = headA;
+		*list_b = headB;
 }
 
 void rotate(t_list **list)
@@ -86,8 +86,8 @@ void rotate(t_list **list)
 	head->next = NULL;
 }
 
-void rotate_all(t_list **listA, t_list **listB)
+void rotate_all(t_list **list_a, t_list **list_b)
 {
-	rotate(listA);
-	rotate(listB);
+	rotate(list_a);
+	rotate(list_b);
 }

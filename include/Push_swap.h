@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 04:41:55 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/15 05:19:48 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/16 01:13:34 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,14 +34,14 @@ enum e_instr
 	RB
 };
 
-int check_duplicate(t_list *lst, int nb);
-void fill_list(int ac, char **av, t_data *data, t_list **listA);
-void pushA(t_list **listA, t_list **listB);
-void pushB(t_list **listA, t_list **listB);
+int check_duplicate(t_list *list, int nb);
+void fill_list(int ac, char **av, t_data *data, t_list **list);
+void pushA(t_list **list_a, t_list **list_b);
+void pushB(t_list **list_a, t_list **list_b);
 void rotate(t_list **list);
-void rotate_all(t_list **listA, t_list **listB);
+void rotate_all(t_list **list_a, t_list **list_b);
 int	find_max_bits(int listlen);
-void	sort_list(t_list **listA, t_list **listB);
+void	sort_list(t_list **list_a, t_list **list_b);
 t_list	*get_next_min(t_list **list);
 void	sort_index(t_list **list);
 

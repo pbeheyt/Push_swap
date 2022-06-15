@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/16 00:33:00 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/16 01:14:21 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	find_max_bits(int listlen)
 	return (max_bits);
 }
 
-void	sort_list(t_list **listA, t_list **listB)
+void	sort_list(t_list **list_a, t_list **list_b)
 {
 	int	i;
 	int	j;
@@ -68,22 +68,21 @@ void	sort_list(t_list **listA, t_list **listB)
 	t_list	*tmp;
 
 	i = -1;
-	listlen = ft_lstsize(*listA);
+	listlen = ft_lstsize(*list_a);
 	max_bits = find_max_bits(listlen);
-	printf("nb de bits %d\n", max_bits);
 	while (++i < max_bits)
 	{
 		j = -1;
 		while (++j < listlen)
 		{
-			tmp = *listA;
+			tmp = *list_a;
 			if (((tmp->index >> i) & 1) == 1)
-				rotate(listA);
+				rotate(list_a);
 			else
-				pushB(listA, listB);
+				pushB(list_a, list_b);
 		}
-		tmp = *listB;
-		while (ft_lstsize(*listB))
-			pushA(listA, listB);
+		tmp = *list_b;
+		while (ft_lstsize(*list_b))
+			pushA(list_a, list_b);
 	}
 }
