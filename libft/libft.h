@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:11:18 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/14 06:35:07 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/14 23:44:30 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 char	*ft_itoa(int n);
 
 // BONUS
-t_list	*ft_lstnew(int nb, t_list *lst);
+t_list	*ft_lstnew(int nb);
 void	ft_lstadd_front(t_list **lst, t_list *new);
 int		ft_lstsize(t_list *lst);
 t_list	*ft_lstlast(t_list *lst);
