@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= Push_swap
+NAME	= push_swap
 
 SRC		= main.c check.c parsing.c operations.c radix.c
 
@@ -44,6 +44,6 @@ fclean: clean
 	make fclean -C libft
 	rm -f $(NAME)
 
-re: fclean all 
+re: fclean all
 
 .PHONY: all clean fclean re

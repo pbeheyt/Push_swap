@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 04:41:55 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/16 03:03:04 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/16 05:30:52 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ enum e_instr
 int 	check_duplicate(t_list *list, int nb);
 
 /*parsing.c.c*/
+void fill_list_str_arg(char **av, t_data *data, t_list **list);
+void 	fill_list_multiple_args(int ac, char **av, t_data *data, t_list **list);
 void 	fill_list(int ac, char **av, t_data *data, t_list **list);
 
 /*operations.c*/
