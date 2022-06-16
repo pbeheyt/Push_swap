@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 04:41:55 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/16 01:13:34 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/16 03:03:04 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,18 +31,26 @@ enum e_instr
 	PA,
 	PB,
 	RA,
-	RB
+	RB,
+	RR
 };
 
-int check_duplicate(t_list *list, int nb);
-void fill_list(int ac, char **av, t_data *data, t_list **list);
-void pushA(t_list **list_a, t_list **list_b);
-void pushB(t_list **list_a, t_list **list_b);
-void rotate(t_list **list);
-void rotate_all(t_list **list_a, t_list **list_b);
-int	find_max_bits(int listlen);
-void	sort_list(t_list **list_a, t_list **list_b);
+/*check.c.c*/
+int 	check_duplicate(t_list *list, int nb);
+
+/*parsing.c.c*/
+void 	fill_list(int ac, char **av, t_data *data, t_list **list);
+
+/*operations.c*/
+void 	push(t_list **list_a, t_list **list_b, int instr);
+void 	push_element(t_list **list_from, t_list **list_to);
+void 	rotate(t_list **list_a, t_list **list_b, int instr);
+void 	rotate_list(t_list **list);
+
+/*radix.c*/
 t_list	*get_next_min(t_list **list);
 void	sort_index(t_list **list);
+int		find_max_bits(int listlen);
+void	sort_list(t_list **list_a, t_list **list_b);
 
 #endif
