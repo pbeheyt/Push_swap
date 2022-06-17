@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 01:56:10 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/17 05:19:54 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/17 05:45:56 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,15 +36,22 @@ static void   print_list(t_list *list_a, t_list *list_b)
 
 int main(int ac, char **av)
 {
-	t_list     *list_a;
-	t_list     *list_b;
-	t_data     data;
+	t_list 	*list_a;
+	t_list	*list_b;
+	t_data	data;
+	int		nb_args;
 	
 	data.error = 0;
 	list_a = NULL;
 	list_b = NULL;
-	fill_list(ac, av, &data, &list_a);
-	print_list(list_a, list_b);
+	printf("nb args : %d\n", fill_list(ac, av, &data, &list_a));
+	
+	nb_args = fill_list(ac, av, &data, &list_a);
+	sort_index(&list_a);
+	if (nb_args >= 6)
+		sort_list(&list_a, &list_b);
+	else if (nb_args >= 3)
+		sort_short_list();
 	// swap_element(&list_a);
 	// print_list(list_a, list_b);
 	rotate(&list_a, &list_b, RA);

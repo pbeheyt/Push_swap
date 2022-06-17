@@ -6,13 +6,13 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/16 05:42:50 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/17 05:35:25 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Push_swap.h"
 
-void fill_list_str_arg(char **av, t_data *data, t_list **list)
+int fill_list_str_arg(char **av, t_data *data, t_list **list)
 {
     int     i;
     char    **args;
@@ -27,11 +27,12 @@ void fill_list_str_arg(char **av, t_data *data, t_list **list)
         if (check_duplicate(*list, data->nb))
         {  
             ft_putstr_fd("Error", 2);
-            return ;
+            return (-1);
         }
         new_element = ft_lstnew(data->nb);
         ft_lstadd_back(list, new_element);
     }
+    return (i);
 }
 
 void fill_list_multiple_args(int ac, char **av, t_data *data, t_list **list)
@@ -54,10 +55,11 @@ void fill_list_multiple_args(int ac, char **av, t_data *data, t_list **list)
     }
 }
 
-void fill_list(int ac, char **av, t_data *data, t_list **list)
+int fill_list(int ac, char **av, t_data *data, t_list **list)
 {
     if (ac == 2)
-        fill_list_str_arg(av, data, list);
+        return (fill_list_str_arg(av, data, list));
     if (ac > 2)
         fill_list_multiple_args(ac, av, data, list);
+    return (ac - 1);
 }
