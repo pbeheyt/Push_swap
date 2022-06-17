@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 04:41:55 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/17 05:33:04 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/17 06:57:22 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,14 @@ int		find_max_bits(int listlen);
 void	sort_list(t_list **list_a, t_list **list_b);
 
 /*short_resolve.c*/
+void	sort_short_list(t_list **list_a, t_list **list_b, int nb_args);
+int		get_index_min(t_list **list);
+void	sort_three(t_list **list_a, t_list **list_b);
+void	sort_three_min_index_zero(t_list **list_a, t_list **list_b, 
+t_list	*second_element, t_list	*third_element);
+void	sort_three_min_index_one(t_list **list_a, t_list **list_b, 
+t_list	*first_element, t_list	*third_element);
+void	sort_three_min_index_two(t_list **list_a, t_list **list_b, 
+t_list	*first_element, t_list	*second_element);
 
 #endif

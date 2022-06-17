@@ -6,74 +6,86 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/17 04:23:41 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/17 07:00:56 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Push_swap.h"
 
-t_list	*get_next_min(t_list **list)
+void	sort_short_list(t_list **list_a, t_list **list_b, int nb_args)
 {
-	t_list	*min;
+	if (nb_args == 3)
+		sort_three(list_a, list_b);
+	if (nb_args == 4)
+		sort_three(list_a, list_b);
+	if (nb_args == 5)
+		sort_three(list_a, list_b);
+}
+
+int	get_index_min(t_list **list)
+{
 	t_list	*tmp;
-	int		first;
+	int		index;
 	
+	index = 0;
 	tmp = *list;
-	min = NULL;
-	first = 0;
 	while (tmp)
 	{
-		if (tmp->index == -1 && (!first || tmp->nb < min->nb))
-		{	
-			min = tmp;
-			first = 1;
-		}
+		if (tmp->index == 0)
+			return (index);
+		index++;
 	tmp = tmp->next;
 	}
-	return (min);
+	return (index);
 }
 
-// void	sort_three(t_list **list)
-// {
+void	sort_three(t_list **list_a, t_list **list_b)
+{
+	int		min_index;
+	t_list	*first_element;
+	t_list	*second_element;
+	t_list	*third_element;
 	
-
-// }
-
-int	find_max_bits(int listlen)
-{
-	int	max_bits;
-
-	max_bits = 0;
-	listlen--;
-	while ((listlen >> max_bits) != 0)
-		max_bits++;
-	return (max_bits);
+	min_index = get_index_min(list_a);
+	first_element = *list_a;
+	second_element = first_element->next;
+	third_element = second_element->next; 
+	if (min_index == 0)
+		sort_three_min_index_zero(list_a, list_b, second_element, third_element);
+	if (min_index == 1)
+		sort_three_min_index_one(list_a, list_b, first_element, third_element);
+	if (min_index == 2)
+		sort_three_min_index_two(list_a, list_b, first_element, second_element);
+	
 }
 
-void	sort_list(t_list **list_a, t_list **list_b)
+void	sort_three_min_index_zero(t_list **list_a, t_list **list_b, 
+t_list	*second_element, t_list	*third_element)
 {
-	int		i;
-	int		j;
-	int		listlen;
-	int		max_bits;
-	t_list	*tmp;
-
-	i = -1;
-	listlen = ft_lstsize(*list_a);
-	max_bits = find_max_bits(listlen);
-	while (++i < max_bits)
+	if (second_element->nb > third_element->nb)
 	{
-		j = -1;
-		while (++j < listlen)
-		{
-			tmp = *list_a;
-			if (((tmp->index >> i) & 1) == 1)
-				rotate(list_a, list_b, RA);
-			else
-				push(list_a, list_b, PB);
-		}
-		tmp = *list_b;
-		while (ft_lstsize(*list_b))
-			push(list_a, list_b, PA);
+		swap(list_a, list_b, SA);
+		rotate(list_a, list_b, RA);
+	}
+}
+
+void	sort_three_min_index_one(t_list **list_a, t_list **list_b, 
+t_list	*first_element, t_list	*third_element)
+{
+	if (first_element->nb < third_element->nb)
+		swap(list_a, list_b, SA);
+	else if (first_element->nb > third_element->nb)
+		rotate(list_a, list_b, RA);
+}
+
+void	sort_three_min_index_two(t_list **list_a, t_list **list_b, 
+t_list	*first_element, t_list	*second_element)
+{
+	if (first_element->nb < second_element->nb)
+		reverse_rotate(list_a, list_b, RRA);
+	else if (first_element->nb > second_element->nb)
+	{	
+		rotate(list_a, list_b, RA);
+		swap(list_a, list_b, SA);
 	}
 }
