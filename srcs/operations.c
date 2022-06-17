@@ -6,27 +6,13 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/16 06:50:47 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/17 05:09:45 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Push_swap.h"
 
-void push(t_list **list_a, t_list **list_b, int instr)
-{
-	if (instr == PA)
-	{
-		push_element(list_b, list_a);
-		ft_putstr_fd("pa\n", 1);
-	}
-	if (instr == PB)
-	{
-		push_element(list_a, list_b);
-		ft_putstr_fd("pb\n", 1);
-	}		
-}
-
-void push_element(t_list **list_from, t_list **list_to)
+void	push_element(t_list **list_from, t_list **list_to)
 {
 	t_list  *head_from;
 	t_list  *head_to;
@@ -52,39 +38,54 @@ void push_element(t_list **list_from, t_list **list_to)
 	*list_to = head_to;
 }
 
-void rotate(t_list **list_a, t_list **list_b, int instr)
+void	push(t_list **list_a, t_list **list_b, int instr)
 {
-{
-	if (instr == RA)
+	if (instr == PA)
 	{
-		rotate_list(list_a);
-		ft_putstr_fd("ra\n", 1);
-	}		
-	if (instr == RB)
-	{
-		rotate_list(list_b);
-		ft_putstr_fd("rb\n", 1);
+		push_element(list_b, list_a);
+		ft_putstr_fd("pa\n", 1);
 	}
-	if (instr == RR)
+	if (instr == PB)
 	{
-		rotate_list(list_a);
-		rotate_list(list_b);
-		ft_putstr_fd("rr\n", 1);
-	}	
-}
+		push_element(list_a, list_b);
+		ft_putstr_fd("pb\n", 1);
+	}		
 }
 
-void rotate_list(t_list **list)
+void	swap_element(t_list **list)
 {
 	t_list	*head;
-	t_list	*tail;
+	t_list	*first;
+	t_list	*second;
 
 	head = *list;
-	tail = ft_lstlast(*list);
+	first = head;
+	second = first->next;
 
-	if (!head->next)
+	if (!head || !head->next)
 		return ;
-	*list = head->next;
-	tail->next = head;
-	head->next = NULL;
+	first->next = second->next;
+	second->next = first;
+	*list = second;
 }
+
+void	swap(t_list **list_a, t_list **list_b, int instr)
+{
+	if (instr == SA)
+	{
+		swap_element(list_a);
+		ft_putstr_fd("sa\n", 1);
+	}
+	if (instr == SB)
+	{
+		swap_element(list_a);
+		ft_putstr_fd("sb\n", 1);
+	}
+	if (instr == SS)
+	{
+		swap_element(list_a);
+		swap_element(list_b);
+		ft_putstr_fd("ss\n", 1);
+	}		
+}
+

@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 04:41:55 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/16 05:30:52 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/17 05:12:01 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,18 @@ typedef struct s_data
 
 enum e_instr
 {
+	SA,
+	SB,
+	SS,
 	PA,
 	PB,
 	RA,
 	RB,
-	RR
+	RR,
+	RRA,
+	RRB,
+	RRR
+	
 };
 
 /*check.c.c*/
@@ -44,15 +51,23 @@ void 	fill_list_multiple_args(int ac, char **av, t_data *data, t_list **list);
 void 	fill_list(int ac, char **av, t_data *data, t_list **list);
 
 /*operations.c*/
-void 	push(t_list **list_a, t_list **list_b, int instr);
 void 	push_element(t_list **list_from, t_list **list_to);
+void 	push(t_list **list_a, t_list **list_b, int instr);
+void 	swap_element(t_list **list);
+void	swap(t_list **list_a, t_list **list_b, int instr);
+
+/*operations2.c*/
 void 	rotate(t_list **list_a, t_list **list_b, int instr);
 void 	rotate_list(t_list **list);
+void	reverse_rotate(t_list **list_a, t_list **list_b, int instr);
+void 	reverse_rotate_list(t_list **list);
 
 /*radix.c*/
 t_list	*get_next_min(t_list **list);
 void	sort_index(t_list **list);
 int		find_max_bits(int listlen);
 void	sort_list(t_list **list_a, t_list **list_b);
+
+/*short_resolve.c*/
 
 #endif
