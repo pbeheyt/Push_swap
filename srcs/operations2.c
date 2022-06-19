@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/17 05:21:34 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/19 05:40:17 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void	rotate_list(t_list **list)
 
 	head = *list;
 	tail = ft_lstlast(*list);
-
 	if (!head->next)
 		return ;
 	*list = head->next;
@@ -67,7 +66,7 @@ void	reverse_rotate(t_list **list_a, t_list **list_b, int instr)
 	}	
 }
 
-void reverse_rotate_list(t_list **list)
+void	reverse_rotate_list(t_list **list)
 {
 	t_list	*tmp;
 	t_list	*tmp_prev;

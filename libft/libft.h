@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 16:11:18 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/19 03:58:11 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/19 05:34:19 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ typedef struct s_list
 	struct s_list	*next;
 }					t_list;
 
-int	ft_atoi(const char *str, int *error);
+int		ft_atoi(const char *str, int *error);
 int		ft_isalnum(int c);
 int		ft_isalpha(int c);
 int		ft_isascii(int c);

@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/17 05:09:45 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/19 05:51:06 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 void	push_element(t_list **list_from, t_list **list_to)
 {
-	t_list  *head_from;
-	t_list  *head_to;
-	t_list  *tmp;
-	
+	t_list	*head_from;
+	t_list	*head_to;
+	t_list	*tmp;
+
 	head_from = *list_from;
 	head_to = *list_to;
 	if (!head_from)
@@ -27,12 +27,12 @@ void	push_element(t_list **list_from, t_list **list_to)
 	if (!head_to)
 	{
 		head_to = tmp;
-		head_to->next = NULL;			
+		head_to->next = NULL;
 	}
 	else
 	{
 		tmp->next = head_to;
-		head_to = tmp;	
+		head_to = tmp;
 	}
 	*list_from = head_from;
 	*list_to = head_to;
@@ -61,7 +61,6 @@ void	swap_element(t_list **list)
 	head = *list;
 	first = head;
 	second = first->next;
-
 	if (!head || !head->next)
 		return ;
 	first->next = second->next;
@@ -88,4 +87,3 @@ void	swap(t_list **list_a, t_list **list_b, int instr)
 		ft_putstr_fd("ss\n", 1);
 	}		
 }
-

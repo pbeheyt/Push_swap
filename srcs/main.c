@@ -6,20 +6,19 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 01:56:10 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/19 05:17:54 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/19 05:44:07 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "Push_swap.h"
+#include "Push_swap.h"
 
-
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
-	t_list 	*list_a;
+	t_list	*list_a;
 	t_list	*list_b;
 	t_data	data;
 	int		nb_args;
-	
+
 	list_a = NULL;
 	list_b = NULL;
 	data.error = 0;
@@ -32,9 +31,10 @@ int main(int ac, char **av)
 	else if (nb_args >= 2)
 		sort_short_list(&list_a, &list_b, nb_args);
 	ft_lstclear(&list_a);
-	ft_lstclear(&list_b);	
+	ft_lstclear(&list_b);
 	return (0);
 }
+
 /*
 static void   print_list(t_list *list_a, t_list *list_b)
 {
@@ -56,5 +56,4 @@ static void   print_list(t_list *list_a, t_list *list_b)
 		tmp = tmp->next;
 	}
 	printf("\n\n");
-}
-*/
+}*/
