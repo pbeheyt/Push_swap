@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/19 04:32:19 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/19 05:16:25 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,11 @@ int fill_list_str_arg(char **av, t_data *data, t_list **list)
     while (args[++i])
     {
         data->nb = ft_atoi(args[i], &data->error);
+        free(args[i]);
         if (data->error || check_duplicate(*list, data)) 
         {
             ft_lstclear(list);
+            free (args);
             ft_putstr_fd("Error\n", 2);
             return (-1);
         }
@@ -33,6 +35,7 @@ int fill_list_str_arg(char **av, t_data *data, t_list **list)
         new_element = ft_lstnew(data->nb);
         ft_lstadd_back(list, new_element);
     }
+    free(args);
     return (i);
 }
 

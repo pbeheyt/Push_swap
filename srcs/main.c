@@ -6,33 +6,12 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 01:56:10 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/19 04:47:52 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/19 05:17:54 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Push_swap.h"
 
-// static void   print_list(t_list *list_a, t_list *list_b)
-// {
-// 	t_list	*tmp;
-	
-// 	printf("LISTE A  | len : %d\n", ft_lstsize(list_a));
-// 	tmp = list_a;
-// 	while (tmp)
-// 	{
-// 		printf("nb: %d | index : %d\n", tmp->nb, tmp->index);
-// 		tmp = tmp->next;
-// 	}
-// 	printf("---------------\n");
-// 	tmp = list_b;
-// 	printf("LISTE B  | len : %d\n", ft_lstsize(list_b));
-// 	while (tmp)
-// 	{
-// 		printf("nb: %d | index : %d\n", tmp->nb, tmp->index);
-// 		tmp = tmp->next;
-// 	}
-// 	printf("\n\n");
-// }
 
 int main(int ac, char **av)
 {
@@ -56,3 +35,26 @@ int main(int ac, char **av)
 	ft_lstclear(&list_b);	
 	return (0);
 }
+/*
+static void   print_list(t_list *list_a, t_list *list_b)
+{
+	t_list	*tmp;
+	
+	printf("LISTE A  | len : %d\n", ft_lstsize(list_a));
+	tmp = list_a;
+	while (tmp)
+	{
+		printf("nb: %d | index : %d\n", tmp->nb, tmp->index);
+		tmp = tmp->next;
+	}
+	printf("---------------\n");
+	tmp = list_b;
+	printf("LISTE B  | len : %d\n", ft_lstsize(list_b));
+	while (tmp)
+	{
+		printf("nb: %d | index : %d\n", tmp->nb, tmp->index);
+		tmp = tmp->next;
+	}
+	printf("\n\n");
+}
+*/
