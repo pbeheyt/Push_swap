@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 01:56:10 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/17 06:52:33 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/19 02:48:28 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int main(int ac, char **av)
 	sort_index(&list_a);
 	if (nb_args >= 6)
 		sort_list(&list_a, &list_b);
-	else if (nb_args >= 3)
+	else if (nb_args >= 2)
 		sort_short_list(&list_a, &list_b, nb_args);
 	print_list(list_a, list_b);
 	// rotate(&list_a, &list_b, RA);
