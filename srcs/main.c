@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 01:56:10 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/19 04:21:32 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/19 04:47:52 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int main(int ac, char **av)
 		sort_long_list(&list_a, &list_b);
 	else if (nb_args >= 2)
 		sort_short_list(&list_a, &list_b, nb_args);
-	ft_lstclear (&list_a);
-	ft_lstclear (&list_b);	
+	ft_lstclear(&list_a);
+	ft_lstclear(&list_b);	
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 11:34:40 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/14 06:32:26 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/19 05:06:41 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 int	ft_atoi(const char *str, int *error)
 {
-	long		nblong;
-	int			sign;
 	int			i;
+	int			sign;
+	long long	result;
+	int			tmp;
 
 	i = 0;
 	sign = 1;
-	nblong = 0;
+	result = 0;
 	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	if (str[i] == '-')
@@ -32,14 +33,16 @@ int	ft_atoi(const char *str, int *error)
 		i++;
 	while (str[i] >= '0' && str[i] <= '9')
 	{
-		nblong = nblong * 10 + str[i] - '0';
+		result = result * 10 + str[i] - '0';
 		i++;
 	}
 	if (str[i])
 		*error = 1;
-	if (nblong * sign < INT_MIN || nblong * sign > INT_MAX)
+	result *= sign;
+	tmp = (int)result;
+	if (result != tmp)
         *error = 1;
-	return (nblong * sign);
+	return (result);
 }
 /*
 int	main(void)
