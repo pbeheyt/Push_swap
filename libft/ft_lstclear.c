@@ -6,24 +6,23 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:47:15 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/05/05 20:07:25 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/19 03:57:20 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void*))
+void	ft_lstclear(t_list **lst)
 {
 	t_list	*element;
 
-	if (lst == 0 || del == 0)
+	if (!lst)
 		return ;
 	while (*lst != 0)
 	{
-		del((*lst)->content);
 		element = *lst;
 		*lst = element->next;
 		free(element);
 	}
-	*lst = 0;
+	*lst = NULL;
 }

@@ -1,52 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   radix.c                                            :+:      :+:    :+:   */
+/*   sort_long_list.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/16 03:03:37 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/19 03:03:56 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Push_swap.h"
-
-t_list	*get_next_min(t_list **list)
-{
-	t_list	*min;
-	t_list	*tmp;
-	int		first;
-	
-	tmp = *list;
-	min = NULL;
-	first = 0;
-	while (tmp)
-	{
-		if (tmp->index == -1 && (!first || tmp->nb < min->nb))
-		{	
-			min = tmp;
-			first = 1;
-		}
-	tmp = tmp->next;
-	}
-	return (min);
-}
-
-void	sort_index(t_list **list)
-{
-	int		index;
-	int		listlen;
-	t_list	*tmp;
-	
-	index = 0;
-	listlen = ft_lstsize(*list);
-	while (listlen--)
-	{
-		tmp = get_next_min(list);
-		tmp->index = index++;
-	}
-}
 
 int	find_max_bits(int listlen)
 {
@@ -59,7 +23,7 @@ int	find_max_bits(int listlen)
 	return (max_bits);
 }
 
-void	sort_list(t_list **list_a, t_list **list_b)
+void	sort_long_list(t_list **list_a, t_list **list_b)
 {
 	int		i;
 	int		j;
