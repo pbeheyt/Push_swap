@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 01:56:10 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/19 05:44:07 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/21 15:44:07 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	main(int ac, char **av)
 	if (data.error)
 		return (-1);
 	sort_index(&list_a);
+	if (is_sorted(&list_a))
+		return (0);
 	if (nb_args >= 6)
 		sort_long_list(&list_a, &list_b);
 	else if (nb_args >= 2)

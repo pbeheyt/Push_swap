@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/20 11:34:40 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/19 05:39:19 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/06/21 16:29:09 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ int	ft_atoi(const char *str, int *error)
 		result = result * 10 + str[i++] - '0';
 	result *= sign;
 	tmp = (int)result;
-	if (str[i] || result != tmp)
+	if (str[i] || result != tmp || (sign > 0 && ft_strlen(str) > 10)
+		|| (sign < 0 && ft_strlen(str) > 11))
 		*error = 1;
 	return (result);
 }
