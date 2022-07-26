@@ -6,13 +6,13 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/19 05:51:06 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/07/26 08:32:20 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Push_swap.h"
 
-void	push_element(t_list **list_from, t_list **list_to)
+static void	push_element(t_list **list_from, t_list **list_to)
 {
 	t_list	*head_from;
 	t_list	*head_to;
@@ -52,7 +52,7 @@ void	push(t_list **list_a, t_list **list_b, int instr)
 	}		
 }
 
-void	swap_element(t_list **list)
+static void	swap_element(t_list **list)
 {
 	t_list	*head;
 	t_list	*first;

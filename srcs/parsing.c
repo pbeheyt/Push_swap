@@ -6,13 +6,13 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/19 05:57:49 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/07/26 08:34:57 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Push_swap.h"
 
-int	fill_list_str_arg(char **av, t_data *data, t_list **list)
+static int	fill_list_str_arg(char **av, t_data *data, t_list **list)
 {
 	int		i;
 	char	**args;
@@ -39,7 +39,7 @@ int	fill_list_str_arg(char **av, t_data *data, t_list **list)
 	return (i);
 }
 
-void	fill_list_multiple_args(int ac, char **av, t_data *data, t_list **list)
+static void	fill_list_multiple_args(int ac, char **av, t_data *data, t_list **list)
 {
 	int		i;
 	t_list	*new_element;
@@ -69,7 +69,7 @@ int	fill_list(int ac, char **av, t_data *data, t_list **list)
 	return (ac - 1);
 }
 
-t_list	*get_next_min(t_list **list)
+static t_list	*get_next_min(t_list **list)
 {
 	t_list	*min;
 	t_list	*tmp;

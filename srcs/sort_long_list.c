@@ -6,13 +6,13 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/19 05:39:40 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/07/26 08:31:58 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Push_swap.h"
 
-int	find_max_bits(int listlen)
+static int	find_max_bits(int listlen)
 {
 	int	max_bits;
 

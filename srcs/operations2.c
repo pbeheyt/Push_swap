@@ -6,11 +6,25 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/19 05:40:17 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/07/26 08:33:03 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Push_swap.h"
+
+static void	rotate_list(t_list **list)
+{
+	t_list	*head;
+	t_list	*tail;
+
+	head = *list;
+	tail = ft_lstlast(*list);
+	if (!head->next)
+		return ;
+	*list = head->next;
+	tail->next = head;
+	head->next = NULL;
+}
 
 void	rotate(t_list **list_a, t_list **list_b, int instr)
 {
@@ -32,18 +46,21 @@ void	rotate(t_list **list_a, t_list **list_b, int instr)
 	}	
 }
 
-void	rotate_list(t_list **list)
+static void	reverse_rotate_list(t_list **list)
 {
-	t_list	*head;
-	t_list	*tail;
+	t_list	*tmp;
+	t_list	*tmp_prev;
 
-	head = *list;
-	tail = ft_lstlast(*list);
-	if (!head->next)
-		return ;
-	*list = head->next;
-	tail->next = head;
-	head->next = NULL;
+	tmp = *list;
+	tmp_prev = NULL;
+	while (tmp->next)
+	{
+		tmp_prev = tmp;
+		tmp = tmp->next;
+	}
+	tmp->next = *list;
+	tmp_prev->next = NULL;
+	*list = tmp;
 }
 
 void	reverse_rotate(t_list **list_a, t_list **list_b, int instr)
@@ -64,21 +81,4 @@ void	reverse_rotate(t_list **list_a, t_list **list_b, int instr)
 		reverse_rotate_list(list_b);
 		ft_putstr_fd("rrr\n", 1);
 	}	
-}
-
-void	reverse_rotate_list(t_list **list)
-{
-	t_list	*tmp;
-	t_list	*tmp_prev;
-
-	tmp = *list;
-	tmp_prev = NULL;
-	while (tmp->next)
-	{
-		tmp_prev = tmp;
-		tmp = tmp->next;
-	}
-	tmp->next = *list;
-	tmp_prev->next = NULL;
-	*list = tmp;
 }

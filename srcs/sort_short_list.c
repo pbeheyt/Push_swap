@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/19 06:09:58 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/07/26 08:31:01 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,23 @@ void	sort_short_list(t_list **list_a, t_list **list_b, int nb_args)
 		sort_five(list_a, list_b, 0);
 }
 
+int	get_min_index_pos(t_list **list, int min_index_value)
+{
+	t_list	*tmp;
+	int		min_index_pos;
+
+	min_index_pos = 0;
+	tmp = *list;
+	while (tmp)
+	{
+		if (tmp->index == min_index_value)
+			return (min_index_pos);
+		min_index_pos++;
+	tmp = tmp->next;
+	}
+	return (min_index_pos);
+}
+
 void	sort_two(t_list **list_a, t_list **list_b, int min_index_value)
 {
 	int		min_index_pos;
@@ -31,25 +48,6 @@ void	sort_two(t_list **list_a, t_list **list_b, int min_index_value)
 	min_index_pos = get_min_index_pos(list_a, min_index_value);
 	if (min_index_pos == 1)
 		swap(list_a, list_b, SA);
-}
-
-void	sort_three(t_list **list_a, t_list **list_b, int min_index_value)
-{
-	int		min_index_pos;
-	t_list	*first_elem;
-	t_list	*second_elem;
-	t_list	*third_elem;
-
-	min_index_pos = get_min_index_pos(list_a, min_index_value);
-	first_elem = *list_a;
-	second_elem = first_elem->next;
-	third_elem = second_elem->next;
-	if (min_index_pos == 0)
-		sort_three_min_index_zero(list_a, list_b, second_elem, third_elem);
-	if (min_index_pos == 1)
-		sort_three_min_index_one(list_a, list_b, first_elem, third_elem);
-	if (min_index_pos == 2)
-		sort_three_min_index_two(list_a, list_b, first_elem, second_elem);
 }
 
 void	sort_four(t_list **list_a, t_list **list_b, int min_index_value)
