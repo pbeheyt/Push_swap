@@ -6,20 +6,20 @@
 #    By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/03/31 15:08:45 by pbeheyt           #+#    #+#              #
-#    Updated: 2022/06/19 03:19:58 by pbeheyt          ###   ########.fr        #
+#    Updated: 2022/07/30 08:40:28 by pbeheyt          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= push_swap
 
 SRC		= main.c \
-		check.c \
 		parsing.c \
 		operations.c \
 		operations2.c \
 		sort_short_list.c \
 		sort_short_list2.c \
-		sort_long_list.c
+		sort_long_list.c \
+		sorting.c
 
 DIR 	= ${addprefix srcs/,${SRC}}
 

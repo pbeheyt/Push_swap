@@ -6,36 +6,11 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 01:56:10 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/21 15:44:07 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/07/30 10:08:28 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Push_swap.h"
-
-int	main(int ac, char **av)
-{
-	t_list	*list_a;
-	t_list	*list_b;
-	t_data	data;
-	int		nb_args;
-
-	list_a = NULL;
-	list_b = NULL;
-	data.error = 0;
-	nb_args = fill_list(ac, av, &data, &list_a);
-	if (data.error)
-		return (-1);
-	sort_index(&list_a);
-	if (is_sorted(&list_a))
-		return (0);
-	if (nb_args >= 6)
-		sort_long_list(&list_a, &list_b);
-	else if (nb_args >= 2)
-		sort_short_list(&list_a, &list_b, nb_args);
-	ft_lstclear(&list_a);
-	ft_lstclear(&list_b);
-	return (0);
-}
 
 /*
 static void   print_list(t_list *list_a, t_list *list_b)
@@ -59,3 +34,30 @@ static void   print_list(t_list *list_a, t_list *list_b)
 	}
 	printf("\n\n");
 }*/
+
+int	main(int ac, char **av)
+{
+	t_list	*list_a;
+	t_list	*list_b;
+	int		error;
+	int		nb_args;
+
+	list_a = NULL;
+	list_b = NULL;
+	error = 0;
+	nb_args = fill_list(ac, av, &error, &list_a);
+	if (error)
+		return (ft_putstr_fd("Error\n", 2), -1);
+	sort_index(&list_a);
+	// print_list(list_a, list_b);
+	if (is_sorted(&list_a))
+		return (ft_lstclear(&list_a), 0);
+	if (nb_args >= 6)
+		sort_long_list(&list_a, &list_b);
+	else if (nb_args >= 2)
+		sort_short_list(&list_a, &list_b, nb_args);
+	// print_list(list_a, list_b);
+	ft_lstclear(&list_a);
+	ft_lstclear(&list_b);
+	return (0);
+}

@@ -1,38 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check.c                                            :+:      :+:    :+:   */
+/*   sorting.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/21 15:46:47 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/07/30 09:45:41 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Push_swap.h"
 
-int	check_duplicate(t_list *list, t_data *data)
+static t_list	*get_next_min(t_list **list)
 {
+	t_list	*min;
 	t_list	*tmp;
+	int		first;
 
-	tmp = list;
+	tmp = *list;
+	min = NULL;
+	first = 0;
 	while (tmp)
 	{
-		if (data->nb == tmp->nb)
-		{
-			data->error = 1;
-			return (1);
+		if (tmp->index == -1 && (!first || tmp->nb < min->nb))
+		{	
+			min = tmp;
+			first = 1;
 		}
-		tmp = tmp->next;
+	tmp = tmp->next;
 	}
-	return (0);
+	return (min);
+}
+
+void	sort_index(t_list **list)
+{
+	int		index;
+	int		listlen;
+	t_list	*tmp;
+
+	index = 0;
+	listlen = ft_lstsize(*list);
+	while (listlen--)
+	{
+		tmp = get_next_min(list);
+		tmp->index = index++;
+	}
 }
 
 int	is_sorted(t_list **list)
 {
 	t_list	*tmp;
 
+	if (!*list)
+		return (1);
 	tmp = *list;
 	while (tmp->next)
 	{

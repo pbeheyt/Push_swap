@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 11:47:15 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/06/19 03:57:20 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/07/30 10:00:02 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,17 @@
 
 void	ft_lstclear(t_list **lst)
 {
-	t_list	*element;
+	t_list	*tmp_prev;
+	t_list	*tmp;
 
 	if (!lst)
 		return ;
-	while (*lst != 0)
+	tmp = *lst;
+	while (tmp)
 	{
-		element = *lst;
-		*lst = element->next;
-		free(element);
+		tmp_prev = tmp;
+		tmp = tmp_prev->next;
+		free(tmp_prev);
 	}
 	*lst = NULL;
 }

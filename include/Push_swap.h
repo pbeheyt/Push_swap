@@ -6,11 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/10 04:41:55 by pbeheyt           #+#    #+#             */
-<<<<<<< HEAD
-/*   Updated: 2022/07/26 08:35:30 by pbeheyt          ###   ########.fr       */
-=======
-/*   Updated: 2022/06/21 15:45:55 by pbeheyt          ###   ########.fr       */
->>>>>>> 1531c7618fddeef23658c433010a786fed973fe6
+/*   Updated: 2022/07/30 08:39:57 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +18,6 @@
 # include <stdio.h>
 # include <limits.h>
 # include "libft.h"
-
-typedef struct s_data
-{
-	int	error;
-	int	nb;
-	int	index;
-}			t_data;
 
 enum e_instr
 {
@@ -45,13 +34,12 @@ enum e_instr
 	RRR
 };
 
-/*check.c*/
-int		check_duplicate(t_list *list, t_data *data);
+/*sorting.c*/
+void	sort_index(t_list **list);
 int		is_sorted(t_list **list);
 
 /*parsing.c*/
-int		fill_list(int ac, char **av, t_data *data, t_list **list);
-void	sort_index(t_list **list);
+int		fill_list(int ac, char **av, int *error, t_list **list);
 
 /*operations.c*/
 void	push(t_list **list_a, t_list **list_b, int instr);

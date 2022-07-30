@@ -6,15 +6,45 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/07/26 08:34:57 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/07/30 10:04:12 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Push_swap.h"
 
-static int	fill_list_str_arg(char **av, t_data *data, t_list **list)
+int	check_duplicate(t_list *list, int nb, int *error)
+{
+	t_list	*tmp;
+
+	tmp = list;
+	while (tmp)
+	{
+		if (nb == tmp->nb)
+		{
+			*error = 1;
+			return (1);
+		}
+		tmp = tmp->next;
+	}
+	return (0);
+}
+
+static void	free_tab(char **tab)
+{	
+	int	i;
+
+	if (!tab)
+		return ;
+	i = -1;
+	while (tab[++i])
+		free(tab[i]);
+	free (tab);
+}
+
+static int	fill_list_str_arg(char **av, int *error, t_list **list)
 {
 	int		i;
+	int		nb;
 	char	**args;
 	t_list	*new_element;
 
@@ -22,85 +52,46 @@ static int	fill_list_str_arg(char **av, t_data *data, t_list **list)
 	i = -1;
 	while (args[++i])
 	{
-		data->nb = ft_atoi(args[i], &data->error);
-		free(args[i]);
-		if (data->error || check_duplicate(*list, data))
+		nb = ft_atoi(args[i], error);
+		if (*error == 1 || check_duplicate(*list, nb, error))
 		{
 			ft_lstclear(list);
-			free (args);
-			ft_putstr_fd("Error\n", 2);
+			free_tab(args);
 			return (-1);
 		}
-		data->index = -1;
-		new_element = ft_lstnew(data->nb);
+		new_element = ft_lstnew(nb);
 		ft_lstadd_back(list, new_element);
 	}
-	free(args);
+	free_tab(args);
 	return (i);
 }
 
-static void	fill_list_multiple_args(int ac, char **av, t_data *data, t_list **list)
+static void	fill_list_multiple_args(int ac, char **av, int *error,
+	t_list **list)
 {
 	int		i;
+	int		nb;
 	t_list	*new_element;
 
 	i = 0;
 	while (++i < ac)
 	{
-		data->nb = ft_atoi(av[i], &data->error);
-		if (data->error || check_duplicate(*list, data))
+		nb = ft_atoi(av[i], error);
+		if (*error == 1 || check_duplicate(*list, nb, error))
 		{
 			ft_lstclear(list);
-			ft_putstr_fd("Error\n", 2);
 			return ;
 		}
-		data->index = -1;
-		new_element = ft_lstnew(data->nb);
+		new_element = ft_lstnew(nb);
 		ft_lstadd_back(list, new_element);
 	}
 }
 
-int	fill_list(int ac, char **av, t_data *data, t_list **list)
+int	fill_list(int ac, char **av, int *error, t_list **list)
 {
 	if (ac == 2)
-		return (fill_list_str_arg(av, data, list));
+		return (fill_list_str_arg(av, error, list));
 	if (ac > 2)
-		fill_list_multiple_args(ac, av, data, list);
+		fill_list_multiple_args(ac, av, error, list);
 	return (ac - 1);
-}
-
-static t_list	*get_next_min(t_list **list)
-{
-	t_list	*min;
-	t_list	*tmp;
-	int		first;
-
-	tmp = *list;
-	min = NULL;
-	first = 0;
-	while (tmp)
-	{
-		if (tmp->index == -1 && (!first || tmp->nb < min->nb))
-		{	
-			min = tmp;
-			first = 1;
-		}
-	tmp = tmp->next;
-	}
-	return (min);
-}
-
-void	sort_index(t_list **list)
-{
-	int		index;
-	int		listlen;
-	t_list	*tmp;
-
-	index = 0;
-	listlen = ft_lstsize(*list);
-	while (listlen--)
-	{
-		tmp = get_next_min(list);
-		tmp->index = index++;
-	}
 }
