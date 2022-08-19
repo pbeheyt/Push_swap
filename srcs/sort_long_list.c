@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/07/26 08:31:58 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/08/19 00:37:47 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ static int	find_max_bits(int listlen)
 	int	max_bits;
 
 	max_bits = 0;
-	listlen--;
 	while ((listlen >> max_bits) != 0)
 		max_bits++;
 	return (max_bits);
@@ -33,7 +32,7 @@ void	sort_long_list(t_list **list_a, t_list **list_b)
 
 	i = -1;
 	listlen = ft_lstsize(*list_a);
-	max_bits = find_max_bits(listlen);
+	max_bits = find_max_bits(listlen - 1);
 	while (++i < max_bits)
 	{
 		j = -1;

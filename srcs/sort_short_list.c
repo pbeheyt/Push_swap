@@ -6,7 +6,7 @@
 /*   By: pbeheyt <pbeheyt@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/14 02:23:24 by pbeheyt           #+#    #+#             */
-/*   Updated: 2022/07/26 08:31:01 by pbeheyt          ###   ########.fr       */
+/*   Updated: 2022/08/19 01:35:47 by pbeheyt          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,15 +53,15 @@ void	sort_two(t_list **list_a, t_list **list_b, int min_index_value)
 void	sort_four(t_list **list_a, t_list **list_b, int min_index_value)
 {
 	int		min_index_pos;
-	int		list_len;
+	int		listlen;
 	int		reverse;
 	t_list	*head;
 
 	min_index_pos = get_min_index_pos(list_a, min_index_value);
-	list_len = ft_lstsize(*list_a);
+	listlen = ft_lstsize(*list_a);
 	reverse = 0;
 	head = *list_a;
-	if (min_index_pos > list_len / 2)
+	if (min_index_pos > listlen / 2)
 		reverse = 1;
 	while (head->index != min_index_value)
 	{
@@ -79,15 +79,15 @@ void	sort_four(t_list **list_a, t_list **list_b, int min_index_value)
 void	sort_five(t_list **list_a, t_list **list_b, int min_index_value)
 {
 	int		min_index_pos;
-	int		list_len;
+	int		listlen;
 	int		reverse;
 	t_list	*head;
 
 	min_index_pos = get_min_index_pos(list_a, min_index_value);
-	list_len = ft_lstsize(*list_a);
+	listlen = ft_lstsize(*list_a);
 	reverse = 0;
 	head = *list_a;
-	if (min_index_pos > list_len / 2)
+	if (min_index_pos > listlen / 2)
 		reverse = 1;
 	while (head->index != min_index_value)
 	{
